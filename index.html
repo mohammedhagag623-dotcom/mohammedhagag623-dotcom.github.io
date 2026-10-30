@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -80,181 +81,176 @@ footer hr{border:0;border-top:1px solid #ffffff44;margin:14px 0}
 .modal{width:min(100%,430px);max-height:90vh;overflow:auto;background:white;border-radius:18px;padding:20px}
 .modal h2{margin-top:0}
 @media(max-width:700px){
- .hero{grid-template-columns:1fr;padding:22px}.heroArt{display:none}
- .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .productImg{height:120px}.productBody{padding:9px}.productBody h3{font-size:15px}
- .productActions{flex-direction:column}.detail{grid-template-columns:1fr;padding:12px}
- .detailImg{min-height:200px}.row2,.paymentChoices{grid-template-columns:1fr}
- .brand h1{font-size:14px}.logo{width:38px;height:38px}
+.hero{grid-template-columns:1fr;padding:22px}.heroArt{display:none}
+.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.productImg{height:120px}.productBody{padding:9px}.productBody h3{font-size:15px}
+.productActions{flex-direction:column}.detail{grid-template-columns:1fr;padding:12px}
+.detailImg{min-height:200px}.row2,.paymentChoices{grid-template-columns:1fr}
+.brand h1{font-size:14px}.logo{width:38px;height:38px}
 }
 </style>
 </head>
 <body>
 <header>
- <div class="top">🐾 المركز البيطري المتكامل — خدمة للطيور والمواشي والخيول والحيوانات</div>
- <div class="nav">
-  <a class="brand" href="#" id="brand">
-   <span class="logo">🐾</span>
-   <span><h1>المركز البيطري المتكامل</h1><small>ELMARKAZ VET · أرمنت</small></span>
-  </a>
-  <button class="btn" onclick="openCart()">🛒 السلة <span id="cartCount">0</span></button>
- </div>
+<div class="top">🐾 المركز البيطري المتكامل — خدمة للطيور والمواشي والخيول والحيوانات</div>
+<div class="nav">
+<a class="brand" href="#" id="brand">
+<span class="logo">🐾</span>
+<span><h1>المركز البيطري المتكامل</h1><small>ELMARKAZ VET · أرمنت</small></span>
+</a>
+<button class="btn" onclick="openCart()">🛒 السلة <span id="cartCount">0</span></button>
+</div>
 </header>
 
 <main class="container">
 <section class="view active" id="homeView">
- <div class="hero">
-  <div><h2>رعاية متكاملة<br>لكل الحيوانات 🐄🐓🐎</h2>
-   <p>أدوية بيطرية وتحضينات وفيتامينات ومستلزمات. تصفح المنتجات وأرسل طلبك بسهولة.</p>
-   <button class="btn gold" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">تسوّق الآن</button>
-  </div>
-  <div class="heroArt">🐄 🐓 🐎</div>
- </div>
-
- <div id="bundleHome"></div>
-
- <section class="panel" id="trackOrder">
-  <h2>🔎 تتبّع طلبك</h2>
-  <p>أدخل رقم الطلب ورقم الموبايل المسجل عند الطلب للاستفسار عن حالته عبر واتساب.</p>
-  <div class="field"><label>رقم الطلب</label><input id="trackNumber" placeholder="ELM-20261029-4821"></div>
-  <div class="field"><label>رقم الموبايل</label><input id="trackPhone" inputmode="tel" placeholder="01xxxxxxxxx"></div>
-  <button class="btn" onclick="trackMyOrder()">استعلم عن حالة الطلب</button>
-  <p class="mini">سيتم فتح واتساب برسالة جاهزة للاستفسار. حالة الطلب لا تتحدث تلقائيًا داخل الموقع.</p>
- </section>
-
- <div class="sectionHead" id="shop"><h2>منتجات المركز</h2></div>
- <input class="search" id="search" placeholder="🔎 ابحث عن اسم المنتج..." oninput="renderProducts()">
- <div class="categories" id="categories"></div>
- <div class="products" id="products"></div>
- <div id="emptyProducts" class="empty" style="display:none">لا توجد منتجات مطابقة.</div>
+<div class="hero">
+<div><h2>رعاية متكاملة<br>لكل الحيوانات 🐄🐓🐎</h2>
+<p>أدوية بيطرية وتحضينات وفيتامينات ومستلزمات. تصفح المنتجات وأرسل طلبك بسهولة.</p>
+<button class="btn gold" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">تسوّق الآن</button></div>
+<div class="heroArt">🐄 🐓 🐎</div>
+</div>
+<div id="bundleHome"></div>
+<section class="panel" id="trackOrder">
+<h2>🔎 تتبّع طلبك</h2>
+<p>أدخل رقم الطلب ورقم الموبايل المسجل عند الطلب للاستفسار عن حالته عبر واتساب.</p>
+<div class="field"><label>رقم الطلب</label><input id="trackNumber" placeholder="ELM-20261029-4821"></div>
+<div class="field"><label>رقم الموبايل</label><input id="trackPhone" inputmode="tel" placeholder="01xxxxxxxxx"></div>
+<button class="btn" onclick="trackMyOrder()">استعلم عن حالة الطلب</button>
+<p class="mini">سيتم فتح واتساب برسالة جاهزة للاستفسار. حالة الطلب لا تتحدث تلقائيًا داخل الموقع.</p>
+</section>
+<div class="sectionHead" id="shop"><h2>منتجات المركز</h2></div>
+<input class="search" id="search" placeholder="🔎 ابحث عن اسم المنتج..." oninput="renderProducts()">
+<div class="categories" id="categories"></div>
+<div class="products" id="products"></div>
+<div id="emptyProducts" class="empty" style="display:none">لا توجد منتجات مطابقة.</div>
 </section>
 
 <section class="view" id="detailView">
- <button class="btn light back" onclick="goHome()">← الرجوع للمنتجات</button>
- <div id="detailContent"></div>
+<button class="btn light back" onclick="goHome()">← الرجوع للمنتجات</button>
+<div id="detailContent"></div>
 </section>
 
 <section class="view" id="cartView">
- <button class="btn light back" onclick="goHome()">← متابعة التسوق</button>
- <div class="sectionHead"><h2>سلة المشتريات</h2></div>
- <div class="panel" id="cartItems"></div>
- <div class="total" id="cartTotal"></div>
- <div class="panel">
-  <h2>بيانات العميل</h2>
-  <div class="field"><label>الاسم بالكامل</label><input id="custName" placeholder="اسمك"></div>
-  <div class="row2">
-   <div class="field"><label>رقم الموبايل</label><input id="custPhone" inputmode="tel" placeholder="01xxxxxxxxx"></div>
-   <div class="field"><label>المحافظة</label>
-    <select id="custGov">
-     <option value="">اختر المحافظة</option>
-     <option>الأقصر</option><option>قنا</option><option>أسوان</option><option>سوهاج</option><option>أسيوط</option><option>المنيا</option><option>البحر الأحمر</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>الشرقية</option><option>الدقهلية</option><option>المنوفية</option><option>الغربية</option><option>البحيرة</option><option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option><option>بني سويف</option><option>الفيوم</option><option>الوادي الجديد</option><option>مطروح</option><option>شمال سيناء</option><option>جنوب سيناء</option><option>القليوبية</option>
-    </select>
-   </div>
-  </div>
-  <div class="field"><label>العنوان بالتفصيل</label><textarea id="custAddress" placeholder="المركز والشارع وأقرب علامة مميزة"></textarea></div>
-  <div class="field"><label>ملاحظات إضافية</label><textarea id="custNotes"></textarea></div>
- </div>
+<button class="btn light back" onclick="goHome()">← متابعة التسوق</button>
+<div class="sectionHead"><h2>سلة المشتريات</h2></div>
+<div class="panel" id="cartItems"></div>
+<div class="total" id="cartTotal"></div>
+<div class="panel">
+<h2>بيانات العميل</h2>
+<div class="field"><label>الاسم بالكامل</label><input id="custName" placeholder="اسمك"></div>
+<div class="row2">
+<div class="field"><label>رقم الموبايل</label><input id="custPhone" inputmode="tel" placeholder="01xxxxxxxxx"></div>
+<div class="field"><label>المحافظة</label>
+<select id="custGov">
+<option value="">اختر المحافظة</option>
+<option>الأقصر</option><option>قنا</option><option>أسوان</option><option>سوهاج</option><option>أسيوط</option><option>المنيا</option><option>البحر الأحمر</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>الشرقية</option><option>الدقهلية</option><option>المنوفية</option><option>الغربية</option><option>البحيرة</option><option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option><option>بني سويف</option><option>الفيوم</option><option>الوادي الجديد</option><option>مطروح</option><option>شمال سيناء</option><option>جنوب سيناء</option><option>القليوبية</option>
+</select></div>
+</div>
+<div class="field"><label>العنوان بالتفصيل</label><textarea id="custAddress" placeholder="المركز والشارع وأقرب علامة مميزة"></textarea></div>
+<div class="field"><label>ملاحظات إضافية</label><textarea id="custNotes"></textarea></div>
+</div>
 
- <div class="panel">
-  <h2>طرق الدفع الإلكترونية</h2>
-  <p class="mini">الدفع عند الاستلام غير متاح. اختر محفظة إلكترونية لها رقم مسجل.</p>
-  <div class="paymentChoices" id="paymentChoices"></div>
-  <div class="payInstructions" id="payInstructions"></div>
-  <div class="field"><label>رقم العملية (بعد التحويل إن توفر)</label><input id="paymentRef" placeholder="رقم مرجع التحويل"></div>
-  <div class="field"><label>اسم صاحب المحفظة المحوِّلة</label><input id="payerName" placeholder="اسم صاحب المحفظة"></div>
-  <div class="notice">تأكد من رقم المحفظة واسم المستلم والمبلغ قبل التحويل. لا تشارك الرقم السري أو رمز التحقق مع أي شخص. يجب التحقق من وصول المبلغ قبل تجهيز الطلب.</div>
-  <button class="btn" style="width:100%;margin-top:13px" onclick="sendOrder()">تأكيد الطلب وإرساله على واتساب</button>
-  <p class="mini">سيفتح واتساب برسالة جاهزة. اضغط إرسال لإرسال الطلب للمركز.</p>
- </div>
+<div class="panel">
+<h2>طرق الدفع الإلكترونية</h2>
+<p class="mini">الدفع عند الاستلام غير متاح. اختر محفظة إلكترونية لها رقم مسجل.</p>
+<div class="paymentChoices" id="paymentChoices"></div>
+<div class="payInstructions" id="payInstructions"></div>
+<div class="field"><label>رقم العملية (بعد التحويل إن توفر)</label><input id="paymentRef" placeholder="رقم مرجع التحويل"></div>
+<div class="field"><label>اسم صاحب المحفظة المحوِّلة</label><input id="payerName" placeholder="اسم صاحب المحفظة"></div>
+<div class="notice">تأكد من رقم المحفظة واسم المستلم والمبلغ قبل التحويل. لا تشارك الرقم السري أو رمز التحقق مع أي شخص. يجب التحقق من وصول المبلغ قبل تجهيز الطلب.</div>
+<button class="btn" style="width:100%;margin-top:13px" onclick="sendOrder()">تأكيد الطلب وإرساله على واتساب</button>
+<p class="mini">سيفتح واتساب برسالة جاهزة. اضغط إرسال لإرسال الطلب للمركز.</p>
+</div>
 </section>
 
 <section class="view" id="traderView">
- <button class="btn light back" onclick="goHome()">← الرجوع للموقع</button>
- <div class="sectionHead"><h2>لوحة التاجر</h2><button class="btn red" onclick="logoutTrader()">خروج</button></div>
- <div class="notice">تغييرات هذه اللوحة محفوظة في هذا المتصفح فقط، ولا تتزامن مع أجهزة العملاء الأخرى من دون تخزين مشترك.</div>
+<button class="btn light back" onclick="goHome()">← الرجوع للموقع</button>
+<div class="sectionHead"><h2>لوحة التاجر</h2><button class="btn red" onclick="logoutTrader()">خروج</button></div>
+<div class="notice">تغييرات هذه اللوحة محفوظة في هذا المتصفح فقط، ولا تتزامن مع أجهزة العملاء الأخرى من دون تخزين مشترك.</div>
+<div class="panel">
+<h2>إدارة المنتجات</h2><div id="adminProducts"></div><hr>
+<h3 id="productFormTitle">إضافة منتج جديد</h3>
+<input type="hidden" id="editProductId">
+<div class="field"><label>اسم المنتج</label><input id="pName"></div>
+<div class="row2">
+<div class="field"><label>السعر بالجنيه</label><input id="pPrice" type="number" min="0"></div>
+<div class="field"><label>السعر قبل الخصم</label><input id="pOldPrice" type="number" min="0"></div>
+</div>
+<div class="row2">
+<div class="field"><label>القسم</label><select id="pCategory"><option>الأدوية</option><option>التحصينات</option><option>الفيتامينات</option><option>السموم</option><option>المستلزمات</option><option>الأعلاف</option></select></div>
+<div class="field"><label>المخزون</label><input id="pStock" type="number" min="0" value="10"></div>
+</div>
+<div class="field"><label>وصف المنتج</label><textarea id="pDesc"></textarea></div>
+<div class="row2">
+<div class="field"><label>رمز المنتج</label><input id="pEmoji" value="🐾"></div>
+<div class="field"><label>صورة من الموبايل</label><input id="pImage" type="file" accept="image/*" onchange="readProductImage(event)"></div>
+</div>
+<p class="mini" id="imageStatus"></p>
+<button class="btn" onclick="saveProduct()">حفظ المنتج</button>
+<button class="btn light" onclick="clearProductForm()">إلغاء التعديل</button>
+</div>
 
- <div class="panel">
-  <h2>إدارة المنتجات</h2><div id="adminProducts"></div><hr>
-  <h3 id="productFormTitle">إضافة منتج جديد</h3>
-  <input type="hidden" id="editProductId">
-  <div class="field"><label>اسم المنتج</label><input id="pName"></div>
-  <div class="row2">
-   <div class="field"><label>السعر بالجنيه</label><input id="pPrice" type="number" min="0"></div>
-   <div class="field"><label>السعر قبل الخصم</label><input id="pOldPrice" type="number" min="0"></div>
-  </div>
-  <div class="row2">
-   <div class="field"><label>القسم</label><select id="pCategory"><option>الأدوية</option><option>التحصينات</option><option>الفيتامينات</option><option>السموم</option><option>المستلزمات</option><option>الأعلاف</option></select></div>
-   <div class="field"><label>المخزون</label><input id="pStock" type="number" min="0" value="10"></div>
-  </div>
-  <div class="field"><label>وصف المنتج</label><textarea id="pDesc"></textarea></div>
-  <div class="row2">
-   <div class="field"><label>رمز المنتج</label><input id="pEmoji" value="🐾"></div>
-   <div class="field"><label>صورة من الموبايل</label><input id="pImage" type="file" accept="image/*" onchange="readProductImage(event)"></div>
-  </div>
-  <p class="mini" id="imageStatus"></p>
-  <button class="btn" onclick="saveProduct()">حفظ المنتج</button>
-  <button class="btn light" onclick="clearProductForm()">إلغاء التعديل</button>
- </div>
+<div class="panel">
+<h2>أرقام المحافظ الإلكترونية</h2>
+<div class="field"><label>فودافون كاش</label><input id="walletVodafone" inputmode="tel"></div>
+<div class="field"><label>اتصالات كاش</label><input id="walletEtisalat" inputmode="tel"></div>
+<div class="field"><label>أورانج كاش</label><input id="walletOrange" inputmode="tel"></div>
+<div class="field"><label>WE Pay / وي كاش</label><input id="walletWe" inputmode="tel"></div>
+<button class="btn" onclick="saveWallets()">حفظ أرقام المحافظ</button>
+</div>
 
- <div class="panel">
-  <h2>أرقام المحافظ الإلكترونية</h2>
-  <div class="field"><label>فودافون كاش</label><input id="walletVodafone" inputmode="tel"></div>
-  <div class="field"><label>اتصالات كاش</label><input id="walletEtisalat" inputmode="tel"></div>
-  <div class="field"><label>أورانج كاش</label><input id="walletOrange" inputmode="tel"></div>
-  <div class="field"><label>WE Pay / وي كاش</label><input id="walletWe" inputmode="tel"></div>
-  <button class="btn" onclick="saveWallets()">حفظ أرقام المحافظ</button>
- </div>
+<div class="panel">
+<h2>إدارة باكيدج المبتدئين</h2>
+<label><input id="bundleActive" type="checkbox"> إظهار الباكيدج للعملاء</label>
+<div class="field"><label>اسم العرض</label><input id="bundleName"></div>
+<div class="row2">
+<div class="field"><label>السعر بالجنيه</label><input id="bundlePrice" type="number" min="0"></div>
+<div class="field"><label>السعر قبل الخصم</label><input id="bundleOldPrice" type="number" min="0"></div>
+</div>
+<div class="field"><label>وصف العرض</label><textarea id="bundleDesc"></textarea></div>
+<div class="field"><label>محتويات الباكيدج</label><textarea id="bundleContents"></textarea></div>
+<div class="field"><label>صورة الباكيدج</label><input id="bundleImage" type="file" accept="image/*" onchange="readBundleImage(event)"></div>
+<p class="mini" id="bundleImageStatus"></p>
+<button class="btn" onclick="saveBundle()">حفظ الباكيدج</button>
+</div>
 
- <div class="panel">
-  <h2>إدارة باكيدج المبتدئين</h2>
-  <label><input id="bundleActive" type="checkbox"> إظهار الباكيدج للعملاء</label>
-  <div class="field"><label>اسم العرض</label><input id="bundleName"></div>
-  <div class="row2">
-   <div class="field"><label>السعر بالجنيه</label><input id="bundlePrice" type="number" min="0"></div>
-   <div class="field"><label>السعر قبل الخصم</label><input id="bundleOldPrice" type="number" min="0"></div>
-  </div>
-  <div class="field"><label>وصف العرض</label><textarea id="bundleDesc"></textarea></div>
-  <div class="field"><label>محتويات الباكيدج</label><textarea id="bundleContents"></textarea></div>
-  <div class="field"><label>صورة الباكيدج</label><input id="bundleImage" type="file" accept="image/*" onchange="readBundleImage(event)"></div>
-  <p class="mini" id="bundleImageStatus"></p>
-  <button class="btn" onclick="saveBundle()">حفظ الباكيدج</button>
- </div>
-
- <div class="panel">
-  <h2>إعدادات الشحن</h2>
-  <div class="row2">
-   <div class="field"><label>شحن 1–2 قطعة</label><input id="shipSmall" type="number" min="0"></div>
-   <div class="field"><label>شحن 3 قطع أو أكثر</label><input id="shipLarge" type="number" min="0"></div>
-  </div>
-  <div class="field"><label>حد الشحن المجاني</label><input id="shipFree" type="number" min="0"></div>
-  <button class="btn" onclick="saveShipping()">حفظ إعدادات الشحن</button>
- </div>
+<div class="panel">
+<h2>إعدادات الشحن</h2>
+<div class="row2">
+<div class="field"><label>شحن 1–2 قطعة</label><input id="shipSmall" type="number" min="0"></div>
+<div class="field"><label>شحن 3 قطع أو أكثر</label><input id="shipLarge" type="number" min="0"></div>
+</div>
+<div class="field"><label>حد الشحن المجاني</label><input id="shipFree" type="number" min="0"></div>
+<button class="btn" onclick="saveShipping()">حفظ إعدادات الشحن</button>
+</div>
 </section>
 </main>
 
 <footer>
- <strong>المركز البيطري المتكامل — ELMARKAZ VET</strong><br>
- تحت إدارة دكتور حجاج · أرمنت الحيط - الأقصر<br>
- يوميًا من 9 صباحًا إلى 10 مساءً<br>
- <hr>
- <div>تطوير وبرمجة: <strong>محمد حجاج</strong></div>
- <div>للتواصل مع المطور: <a href="tel:01107461187">01107461187</a></div>
- <small>تُستخدم المنتجات البيطرية وفق النشرة وإرشادات الطبيب البيطري المختص.</small>
+<strong>المركز البيطري المتكامل — ELMARKAZ VET</strong><br>
+تحت إدارة دكتور حجاج · أرمنت الحيط - الأقصر<br>
+يوميًا من 9 صباحًا إلى 10 مساءً<br>
+<hr>
+<div>تطوير وبرمجة: <strong>محمد حجاج</strong></div>
+<div>للتواصل مع المطور: <a href="tel:01107461187">01107461187</a></div>
+<small>تُستخدم المنتجات البيطرية وفق النشرة وإرشادات الطبيب البيطري المختص.</small>
 </footer>
 
 <div class="modalBg" id="passwordModal">
- <div class="modal">
-  <h2>دخول لوحة التاجر</h2>
-  <div class="field"><label>كلمة المرور</label><input id="traderPassword" type="password" placeholder="كلمة المرور"></div>
-  <p id="passwordError" style="color:#b42e28"></p>
-  <button class="btn" onclick="checkTraderPassword()">دخول</button>
-  <button class="btn light" onclick="closePassword()">إلغاء</button>
- </div>
+<div class="modal">
+<h2>دخول لوحة التاجر</h2>
+<div class="field"><label>كلمة المرور</label><input id="traderPassword" type="password" placeholder="كلمة المرور"></div>
+<p id="passwordError" style="color:#b42e28"></p>
+<button class="btn" onclick="checkTraderPassword()">دخول</button>
+<button class="btn light" onclick="closePassword()">إلغاء</button>
+</div>
 </div>
 
 <script>
 const WHATSAPP_NUMBER="201038785702";
 const TRADER_PASSWORD="01038785702";
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxS1vwsLg77YuX2VFKqknmvB-rakGpxH11z4vuTiQ0hEMaJoklYFc7jYcvdGgkjs1-S/exec";
 const PRODUCT_KEY="elmarkaz_products",CART_KEY="elmarkaz_cart";
 const WALLET_KEY="elmarkaz_wallets",BUNDLE_KEY="elmarkaz_bundle",SHIPPING_KEY="elmarkaz_shipping";
 
@@ -284,43 +280,42 @@ function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.
 function goHome(){showView("homeView");renderProducts()}
 function visual(p){return p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`<span>${esc(p.emoji||"🐾")}</span>`}
 function renderCategories(){
- let cats=["الكل","الأدوية","التحصينات","الفيتامينات","السموم","المستلزمات","الأعلاف"];
- document.getElementById("categories").innerHTML=cats.map(c=>`<button class="cat ${activeCategory===c?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("");
+let cats=["الكل","الأدوية","التحصينات","الفيتامينات","السموم","المستلزمات","الأعلاف"];
+document.getElementById("categories").innerHTML=cats.map(c=>`<button class="cat ${activeCategory===c?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("");
 }
 function setCategory(c){activeCategory=c;renderProducts()}
 function renderProducts(){
- renderCategories();
- let q=(document.getElementById("search").value||"").toLowerCase().trim();
- let list=products.filter(p=>(activeCategory==="الكل"||p.category===activeCategory)&&(`${p.name} ${p.description} ${p.category}`).toLowerCase().includes(q));
- document.getElementById("products").innerHTML=list.map(p=>`
- <article class="product">
-  <div class="productImg" onclick="showProductDetail('${p.id}')">${visual(p)}</div>
-  <div class="productBody"><h3 onclick="showProductDetail('${p.id}')">${esc(p.name)}</h3>
-   <p>${esc(p.description||"")}</p>
-   <span class="price">${money(p.price)}</span>${p.oldPrice>p.price?` <span class="old">${money(p.oldPrice)}</span>`:""}
-   <p>المتاح: ${Number(p.stock||0)} · ${esc(p.category)}</p>
-   <div class="productActions"><button class="btn light" onclick="showProductDetail('${p.id}')">التفاصيل</button><button class="btn" onclick="addToCart('${p.id}')">أضف للسلة</button></div>
-  </div>
- </article>`).join("");
- document.getElementById("emptyProducts").style.display=list.length?"none":"block";
- renderBundleHome();
+renderCategories();
+let q=(document.getElementById("search").value||"").toLowerCase().trim();
+let list=products.filter(p=>(activeCategory==="الكل"||p.category===activeCategory)&&(`${p.name} ${p.description} ${p.category}`).toLowerCase().includes(q));
+document.getElementById("products").innerHTML=list.map(p=>`
+<article class="product">
+<div class="productImg" onclick="showProductDetail('${p.id}')">${visual(p)}</div>
+<div class="productBody"><h3 onclick="showProductDetail('${p.id}')">${esc(p.name)}</h3>
+<p>${esc(p.description||"")}</p>
+<span class="price">${money(p.price)}</span>${p.oldPrice>p.price?` <span class="old">${money(p.oldPrice)}</span>`:""}
+<p>المتاح: ${Number(p.stock||0)} · ${esc(p.category)}</p>
+<div class="productActions"><button class="btn light" onclick="showProductDetail('${p.id}')">التفاصيل</button><button class="btn" onclick="addToCart('${p.id}')">أضف للسلة</button></div>
+</div></article>`).join("");
+document.getElementById("emptyProducts").style.display=list.length?"none":"block";
+renderBundleHome();
 }
 function showProductDetail(id){
- let p=findProduct(id);if(!p)return;
- document.getElementById("detailContent").innerHTML=`<div class="detail">
- <div class="detailImg">${visual(p)}</div><div><small>${esc(p.category)}</small><h2>${esc(p.name)}</h2>
- <span class="price">${money(p.price)}</span>${p.oldPrice>p.price?` <span class="old">${money(p.oldPrice)}</span>`:""}
- <p>${esc(p.description||"لا يوجد وصف مضاف.")}</p><p>المخزون المتاح: ${Number(p.stock||0)}</p>
- <button class="btn" onclick="addToCart('${p.id}')">🛒 أضف إلى السلة</button> <button class="btn light" onclick="openCart()">عرض السلة</button>
- <p class="mini">اتبع النشرة واستشر الطبيب البيطري المختص عند الحاجة.</p></div></div>`;
- showView("detailView");
+let p=findProduct(id);if(!p)return;
+document.getElementById("detailContent").innerHTML=`<div class="detail">
+<div class="detailImg">${visual(p)}</div><div><small>${esc(p.category)}</small><h2>${esc(p.name)}</h2>
+<span class="price">${money(p.price)}</span>${p.oldPrice>p.price?` <span class="old">${money(p.oldPrice)}</span>`:""}
+<p>${esc(p.description||"لا يوجد وصف مضاف.")}</p><p>المخزون المتاح: ${Number(p.stock||0)}</p>
+<button class="btn" onclick="addToCart('${p.id}')">🛒 أضف إلى السلة</button> <button class="btn light" onclick="openCart()">عرض السلة</button>
+<p class="mini">اتبع النشرة واستشر الطبيب البيطري المختص عند الحاجة.</p></div></div>`;
+showView("detailView");
 }
 function addToCart(id){
- let p=findProduct(id);if(!p)return;
- let item=cart.find(x=>x.id===id),qty=item?item.qty:0;
- if(qty>=Number(p.stock||0)){alert("الكمية المطلوبة أكبر من المخزون.");return}
- if(item)item.qty++;else cart.push({id,qty:1});
- saveJSON(CART_KEY,cart);updateCartCount();alert("تمت إضافة المنتج للسلة.");
+let p=findProduct(id);if(!p)return;
+let item=cart.find(x=>x.id===id),qty=item?item.qty:0;
+if(qty>=Number(p.stock||0)){alert("الكمية المطلوبة أكبر من المخزون.");return}
+if(item)item.qty++;else cart.push({id,qty:1});
+saveJSON(CART_KEY,cart);updateCartCount();alert("تمت إضافة المنتج للسلة.");
 }
 function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+Number(x.qty||0),0)}
 function cartRows(){return cart.map(item=>({item,p:findProduct(item.id)})).filter(x=>x.p)}
@@ -329,148 +324,204 @@ function totalQty(){return cartRows().reduce((s,x)=>s+x.item.qty,0)}
 function shipCost(sub,qty){if(sub>=Number(shipping.free))return 0;return qty<=2?Number(shipping.small):Number(shipping.large)}
 function openCart(){showView("cartView");renderCart();renderPaymentChoices()}
 function changeQty(id,delta){
- let item=cart.find(x=>x.id===id),p=findProduct(id);if(!item||!p)return;
- if(delta>0&&item.qty>=Number(p.stock||0)){alert("لا توجد كمية إضافية.");return}
- item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
- saveJSON(CART_KEY,cart);renderCart();updateCartCount()
+let item=cart.find(x=>x.id===id),p=findProduct(id);if(!item||!p)return;
+if(delta>0&&item.qty>=Number(p.stock||0)){alert("لا توجد كمية إضافية.");return}
+item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+saveJSON(CART_KEY,cart);renderCart();updateCartCount()
 }
 function removeCartItem(id){cart=cart.filter(x=>x.id!==id);saveJSON(CART_KEY,cart);renderCart();updateCartCount()}
 function renderCart(){
- let rows=cartRows();
- document.getElementById("cartItems").innerHTML=rows.length?rows.map(({item,p})=>`<div class="cartItem">
- <div><strong>${esc(p.name)}</strong><br><small>${money(p.price)} للقطعة</small><br><strong>${money(p.price*item.qty)}</strong></div>
- <div class="qty"><button onclick="changeQty('${p.id}',-1)">−</button><strong>${item.qty}</strong><button onclick="changeQty('${p.id}',1)">+</button><button class="btn red" onclick="removeCartItem('${p.id}')">حذف</button></div></div>`).join(""):`<div class="empty">السلة فارغة.</div>`;
- let sub=subtotal(),ship=shipCost(sub,totalQty());
- document.getElementById("cartTotal").innerHTML=`قيمة المنتجات: ${money(sub)}<br>الشحن: ${ship===0?"مجاني":money(ship)}<br>الإجمالي: <span class="price">${money(sub+ship)}</span>`;
+let rows=cartRows();
+document.getElementById("cartItems").innerHTML=rows.length?rows.map(({item,p})=>`<div class="cartItem">
+<div><strong>${esc(p.name)}</strong><br><small>${money(p.price)} للقطعة</small><br><strong>${money(p.price*item.qty)}</strong></div>
+<div class="qty"><button onclick="changeQty('${p.id}',-1)">−</button><strong>${item.qty}</strong><button onclick="changeQty('${p.id}',1)">+</button><button class="btn red" onclick="removeCartItem('${p.id}')">حذف</button></div></div>`).join(""):`<div class="empty">السلة فارغة.</div>`;
+let sub=subtotal(),ship=shipCost(sub,totalQty());
+document.getElementById("cartTotal").innerHTML=`قيمة المنتجات: ${money(sub)}<br>الشحن: ${ship===0?"مجاني":money(ship)}<br>الإجمالي: <span class="price">${money(sub+ship)}</span>`;
 }
 const methods=[{id:"vodafone",name:"فودافون كاش",icon:"🔴"},{id:"etisalat",name:"اتصالات كاش",icon:"🟢"},{id:"orange",name:"أورانج كاش",icon:"🟠"},{id:"we",name:"WE Pay / وي كاش",icon:"🟣"}];
 function renderPaymentChoices(){
- let available=methods.filter(m=>(wallets[m.id]||"").trim());
- if(!available.some(m=>m.id===selectedPayment))selectedPayment=available[0]?.id||"";
- document.getElementById("paymentChoices").innerHTML=available.length?available.map(m=>`<label class="payChoice ${selectedPayment===m.id?"selected":""}"><input type="radio" name="pay" ${selectedPayment===m.id?"checked":""} onchange="selectPayment('${m.id}')"><span>${m.icon} <strong>${m.name}</strong></span></label>`).join(""):`<p>لا توجد محافظ أخرى مضافة. يرجى التواصل مع المركز.</p>`;
- renderPaymentInstructions();
+let available=methods.filter(m=>(wallets[m.id]||"").trim());
+if(!available.some(m=>m.id===selectedPayment))selectedPayment=available[0]?.id||"";
+document.getElementById("paymentChoices").innerHTML=available.length?available.map(m=>`<label class="payChoice ${selectedPayment===m.id?"selected":""}"><input type="radio" name="pay" ${selectedPayment===m.id?"checked":""} onchange="selectPayment('${m.id}')"><span>${m.icon} <strong>${m.name}</strong></span></label>`).join(""):`<p>لا توجد محافظ أخرى مضافة. يرجى التواصل مع المركز.</p>`;
+renderPaymentInstructions();
 }
 function selectPayment(id){selectedPayment=id;renderPaymentChoices()}
 function renderPaymentInstructions(){
- let m=methods.find(x=>x.id===selectedPayment),n=m?(wallets[m.id]||"").trim():"";
- document.getElementById("payInstructions").innerHTML=m&&n?`<strong>الدفع عبر ${m.name}</strong>
- <ol><li>افتح محفظتك الإلكترونية.</li><li>اختر تحويل أموال لمحفظة.</li><li>أدخل رقم المحفظة التالي وتأكد من اسم المستلم.</li><li>تحقق من مبلغ الطلب قبل إتمام التحويل.</li><li>احتفظ بإيصال العملية وأرسل بيانات الطلب عبر واتساب.</li></ol>
- <p>رقم المحفظة: <strong dir="ltr">${esc(n)}</strong></p><button class="btn light" onclick="copyWallet('${m.id}')">نسخ رقم المحفظة</button>`:"اختر محفظة متاحة لعرض رقمها وخطوات الدفع.";
+let m=methods.find(x=>x.id===selectedPayment),n=m?(wallets[m.id]||"").trim():"";
+document.getElementById("payInstructions").innerHTML=m&&n?`<strong>الدفع عبر ${m.name}</strong>
+<ol><li>افتح محفظتك الإلكترونية.</li><li>اختر تحويل أموال لمحفظة.</li><li>أدخل رقم المحفظة التالي وتأكد من اسم المستلم.</li><li>تحقق من مبلغ الطلب قبل إتمام التحويل.</li><li>احتفظ بإيصال العملية وأرسل بيانات الطلب عبر واتساب.</li></ol>
+<p>رقم المحفظة: <strong dir="ltr">${esc(n)}</strong></p><button class="btn light" onclick="copyWallet('${m.id}')">نسخ رقم المحفظة</button>`:"اختر محفظة متاحة لعرض رقمها وخطوات الدفع.";
 }
 function copyWallet(id){let n=wallets[id]||"";if(navigator.clipboard?.writeText)navigator.clipboard.writeText(n).then(()=>alert("تم نسخ الرقم")).catch(()=>prompt("انسخ الرقم:",n));else prompt("انسخ الرقم:",n)}
 function makeOrderNumber(){
- const d=new Date(),date=d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");
- return "ELM-"+date+"-"+String(Math.floor(1000+Math.random()*9000));
+const d=new Date(),date=d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");
+return "ELM-"+date+"-"+String(Math.floor(1000+Math.random()*9000));
 }
-function sendOrder(){
- let rows=cartRows();
- if(!rows.length){alert("السلة فارغة.");return}
- let name=document.getElementById("custName").value.trim(),phone=document.getElementById("custPhone").value.trim(),gov=document.getElementById("custGov").value,address=document.getElementById("custAddress").value.trim();
- if(!name||!phone||!gov||!address){alert("أكمل الاسم ورقم الموبايل والمحافظة والعنوان.");return}
- let m=methods.find(x=>x.id===selectedPayment);
- if(!m||!(wallets[m.id]||"").trim()){alert("اختر طريقة دفع لها رقم محفظة محفوظ.");return}
- let orderNo=makeOrderNumber(),sub=subtotal(),ship=shipCost(sub,totalQty()),total=sub+ship;
- let notes=document.getElementById("custNotes").value.trim(),ref=document.getElementById("paymentRef").value.trim(),payer=document.getElementById("payerName").value.trim();
- let lines=rows.map(({item,p})=>`- ${p.name} × ${item.qty} = ${money(p.price*item.qty)}`).join("\n");
- let msg=`طلب جديد من المركز البيطري المتكامل\nرقم الطلب: ${orderNo}\nالاسم: ${name}\nرقم العميل: ${phone}\nالمحافظة: ${gov}\nالعنوان: ${address}\n\nالمنتجات:\n${lines}\n\nقيمة المنتجات: ${money(sub)}\nالشحن: ${ship===0?"مجاني":money(ship)}\nالإجمالي: ${money(total)}\nطريقة الدفع: ${m.name}\nرقم المحفظة: ${wallets[m.id]}\nرقم العملية: ${ref||"لم يُكتب"}\nاسم المحوّل: ${payer||"لم يُكتب"}\nملاحظات: ${notes||"لا يوجد"}\nيرجى تأكيد الطلب والتحقق من الدفع.`;
- try{localStorage.setItem("elmarkaz_last_order",JSON.stringify({orderNo,phone,createdAt:new Date().toISOString()}))}catch(e){}
- document.getElementById("trackNumber").value=orderNo;
- document.getElementById("trackPhone").value=phone;
- const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg);
- const w=window.open(url,"_blank");
- if(!w)location.href=url;
- alert("رقم طلبك هو:\n"+orderNo+"\nاحتفظ به للاستعلام لاحقًا.");
+
+/* إرسال الطلب إلى Google Sheets */
+async function saveOrderToGoogle(orderData){
+try{
+await fetch(GOOGLE_SCRIPT_URL,{
+method:"POST",
+mode:"no-cors",
+headers:{"Content-Type":"text/plain;charset=UTF-8"},
+body:JSON.stringify(orderData)
+});
+return true;
+}catch(error){
+console.error("Google Sheets error:",error);
+return false;
 }
+}
+
+async function sendOrder(){
+let rows=cartRows();
+if(!rows.length){alert("السلة فارغة.");return}
+let name=document.getElementById("custName").value.trim(),phone=document.getElementById("custPhone").value.trim(),gov=document.getElementById("custGov").value,address=document.getElementById("custAddress").value.trim();
+if(!name||!phone||!gov||!address){alert("أكمل الاسم ورقم الموبايل والمحافظة والعنوان.");return}
+let m=methods.find(x=>x.id===selectedPayment);
+if(!m||!(wallets[m.id]||"").trim()){alert("اختر طريقة دفع لها رقم محفظة محفوظ.");return}
+let orderNo=makeOrderNumber(),sub=subtotal(),ship=shipCost(sub,totalQty()),total=sub+ship;
+let notes=document.getElementById("custNotes").value.trim(),ref=document.getElementById("paymentRef").value.trim(),payer=document.getElementById("payerName").value.trim();
+let lines=rows.map(({item,p})=>`- ${p.name} × ${item.qty} = ${money(p.price*item.qty)}`).join("\n");
+let productsText=rows.map(({item,p})=>`${p.name} × ${item.qty}`).join("، ");
+let orderData={
+customerName:name,
+phone:phone,
+address:gov+" - "+address,
+products:productsText,
+total:total
+};
+let msg=`طلب جديد من المركز البيطري المتكامل
+رقم الطلب: ${orderNo}
+الاسم: ${name}
+رقم العميل: ${phone}
+المحافظة: ${gov}
+العنوان: ${address}
+
+المنتجات:
+${lines}
+
+قيمة المنتجات: ${money(sub)}
+الشحن: ${ship===0?"مجاني":money(ship)}
+الإجمالي: ${money(total)}
+طريقة الدفع: ${m.name}
+رقم المحفظة: ${wallets[m.id]}
+رقم العملية: ${ref||"لم يُكتب"}
+اسم المحوّل: ${payer||"لم يُكتب"}
+ملاحظات: ${notes||"لا يوجد"}
+يرجى تأكيد الطلب والتحقق من الدفع.`;
+
+try{localStorage.setItem("elmarkaz_last_order",JSON.stringify({orderNo,phone,createdAt:new Date().toISOString()}))}catch(e){}
+document.getElementById("trackNumber").value=orderNo;
+document.getElementById("trackPhone").value=phone;
+
+const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg);
+const sendButton=document.querySelector('button[onclick="sendOrder()"]');
+sendButton.disabled=true;
+sendButton.textContent="جارٍ إرسال الطلب...";
+const saved=await saveOrderToGoogle(orderData);
+sendButton.disabled=false;
+sendButton.textContent="تأكيد الطلب وإرساله على واتساب";
+
+if(saved){
+alert("تم إرسال بيانات الطلب إلى Google Sheets. رقم طلبك: "+orderNo+"\nسيفتح واتساب الآن لإرسال الطلب للمركز.");
+}else{
+alert("تعذر تأكيد إرسال البيانات إلى Google Sheets. سيفتح واتساب لإرسال الطلب للمركز، ويجب مراجعة الشيت.");
+}
+location.href=url;
+}
+
 function trackMyOrder(){
- let no=document.getElementById("trackNumber").value.trim(),phone=document.getElementById("trackPhone").value.trim();
- if(!no||!phone){alert("اكتب رقم الطلب ورقم الموبايل.");return}
- if(!/^ELM-\d{8}-\d{4}$/.test(no)){alert("صيغة رقم الطلب غير صحيحة.");return}
- let msg=`السلام عليكم، أريد الاستعلام عن حالة طلبي.\nرقم الطلب: ${no}\nرقم الموبايل المسجل: ${phone}\nبرجاء إفادتي بآخر تحديث للطلب.`;
- let url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg);
- const w=window.open(url,"_blank");if(!w)location.href=url;
+let no=document.getElementById("trackNumber").value.trim(),phone=document.getElementById("trackPhone").value.trim();
+if(!no||!phone){alert("اكتب رقم الطلب ورقم الموبايل.");return}
+if(!/^ELM-\d{8}-\d{4}$/.test(no)){alert("صيغة رقم الطلب غير صحيحة.");return}
+let msg=`السلام عليكم، أريد الاستعلام عن حالة طلبي.\nرقم الطلب: ${no}\nرقم الموبايل المسجل: ${phone}\nبرجاء إفادتي بآخر تحديث للطلب.`;
+let url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg);
+location.href=url;
 }
 function renderBundleHome(){
- let el=document.getElementById("bundleHome");
- if(!bundle.active){el.style.display="none";return}
- el.style.display="block";
- el.innerHTML=`<div class="bundleBox">${bundle.image?`<img src="${bundle.image}" alt="باكيدج المبتدئين" style="width:100%;max-height:200px;object-fit:contain">`:""}
- <div>⭐ عرض خاص</div><h2>${esc(bundle.name)}</h2><p>${esc(bundle.desc||"")}</p>
- <p><strong>المحتويات:</strong> ${esc(bundle.contents||"يرجى التواصل مع المركز لمعرفة التفاصيل.")}</p>
- <div class="bundlePrice">${money(bundle.price)} ${bundle.oldPrice>bundle.price?`<span class="old">${money(bundle.oldPrice)}</span>`:""}</div>
- <button class="btn gold" onclick="addBundleToCart()">اطلب الباكيدج</button></div>`;
+let el=document.getElementById("bundleHome");
+if(!bundle.active){el.style.display="none";return}
+el.style.display="block";
+el.innerHTML=`<div class="bundleBox">${bundle.image?`<img src="${bundle.image}" alt="باكيدج المبتدئين" style="width:100%;max-height:200px;object-fit:contain">`:""}
+<div>⭐ عرض خاص</div><h2>${esc(bundle.name)}</h2><p>${esc(bundle.desc||"")}</p>
+<p><strong>المحتويات:</strong> ${esc(bundle.contents||"يرجى التواصل مع المركز لمعرفة التفاصيل.")}</p>
+<div class="bundlePrice">${money(bundle.price)} ${bundle.oldPrice>bundle.price?`<span class="old">${money(bundle.oldPrice)}</span>`:""}</div>
+<button class="btn gold" onclick="addBundleToCart()">اطلب الباكيدج</button></div>`;
 }
 function addBundleToCart(){
- let id="bundle-starter",p={id,name:bundle.name,price:Number(bundle.price),oldPrice:Number(bundle.oldPrice||0),stock:999,category:"العروض",emoji:"🎁",image:bundle.image||"",description:(bundle.desc||"")+" المحتويات: "+(bundle.contents||"")};
- let idx=products.findIndex(x=>x.id===id);if(idx>=0)products[idx]=p;else products.push(p);
- saveJSON(PRODUCT_KEY,products);addToCart(id);
+let id="bundle-starter",p={id,name:bundle.name,price:Number(bundle.price),oldPrice:Number(bundle.oldPrice||0),stock:999,category:"العروض",emoji:"🎁",image:bundle.image||"",description:(bundle.desc||"")+" المحتويات: "+(bundle.contents||"")};
+let idx=products.findIndex(x=>x.id===id);if(idx>=0)products[idx]=p;else products.push(p);
+saveJSON(PRODUCT_KEY,products);addToCart(id);
 }
 function renderAdminProducts(){
- document.getElementById("adminProducts").innerHTML=products.map(p=>`<div class="adminItem"><div style="flex:1"><strong>${esc(p.name)}</strong><small>${money(p.price)} · المخزون ${p.stock}</small></div><button class="btn light" onclick="editProduct('${p.id}')">تعديل</button><button class="btn red" onclick="deleteProduct('${p.id}')">حذف</button></div>`).join("")||"لا توجد منتجات.";
+document.getElementById("adminProducts").innerHTML=products.map(p=>`<div class="adminItem"><div style="flex:1"><strong>${esc(p.name)}</strong><small>${money(p.price)} · المخزون ${p.stock}</small></div><button class="btn light" onclick="editProduct('${p.id}')">تعديل</button><button class="btn red" onclick="deleteProduct('${p.id}')">حذف</button></div>`).join("")||"لا توجد منتجات.";
 }
 function editProduct(id){
- let p=findProduct(id);if(!p)return;
- document.getElementById("editProductId").value=p.id;document.getElementById("pName").value=p.name;document.getElementById("pPrice").value=p.price;document.getElementById("pOldPrice").value=p.oldPrice||"";
- document.getElementById("pCategory").value=["الأدوية","التحصينات","الفيتامينات","السموم","المستلزمات","الأعلاف"].includes(p.category)?p.category:"الأدوية";
- document.getElementById("pStock").value=p.stock;document.getElementById("pDesc").value=p.description||"";document.getElementById("pEmoji").value=p.emoji||"🐾";
- productImageData=p.image||"";document.getElementById("imageStatus").textContent=productImageData?"توجد صورة محفوظة.":"لا توجد صورة مخصصة.";
- document.getElementById("productFormTitle").textContent="تعديل المنتج";document.getElementById("pName").scrollIntoView({behavior:"smooth"});
+let p=findProduct(id);if(!p)return;
+document.getElementById("editProductId").value=p.id;document.getElementById("pName").value=p.name;document.getElementById("pPrice").value=p.price;document.getElementById("pOldPrice").value=p.oldPrice||"";
+document.getElementById("pCategory").value=["الأدوية","التحصينات","الفيتامينات","السموم","المستلزمات","الأعلاف"].includes(p.category)?p.category:"الأدوية";
+document.getElementById("pStock").value=p.stock;document.getElementById("pDesc").value=p.description||"";document.getElementById("pEmoji").value=p.emoji||"🐾";
+productImageData=p.image||"";document.getElementById("imageStatus").textContent=productImageData?"توجد صورة محفوظة.":"لا توجد صورة مخصصة.";
+document.getElementById("productFormTitle").textContent="تعديل المنتج";document.getElementById("pName").scrollIntoView({behavior:"smooth"});
 }
 function clearProductForm(){
- ["editProductId","pName","pPrice","pOldPrice","pDesc"].forEach(id=>document.getElementById(id).value="");
- document.getElementById("pStock").value=10;document.getElementById("pEmoji").value="🐾";document.getElementById("pCategory").value="الأدوية";document.getElementById("pImage").value="";
- productImageData="";document.getElementById("imageStatus").textContent="";document.getElementById("productFormTitle").textContent="إضافة منتج جديد";
+["editProductId","pName","pPrice","pOldPrice","pDesc"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("pStock").value=10;document.getElementById("pEmoji").value="🐾";document.getElementById("pCategory").value="الأدوية";document.getElementById("pImage").value="";
+productImageData="";document.getElementById("imageStatus").textContent="";document.getElementById("productFormTitle").textContent="إضافة منتج جديد";
 }
 function readProductImage(e){
- let f=e.target.files?.[0];if(!f)return;
- if(f.size>1000000){alert("اختر صورة أصغر من 1 ميجابايت.");e.target.value="";return}
- let r=new FileReader();r.onload=()=>{productImageData=r.result;document.getElementById("imageStatus").textContent="تم اختيار الصورة. اضغط حفظ المنتج."};r.readAsDataURL(f);
+let f=e.target.files?.[0];if(!f)return;
+if(f.size>1000000){alert("اختر صورة أصغر من 1 ميجابايت.");e.target.value="";return}
+let r=new FileReader();r.onload=()=>{productImageData=r.result;document.getElementById("imageStatus").textContent="تم اختيار الصورة. اضغط حفظ المنتج."};r.readAsDataURL(f);
 }
 function saveProduct(){
- let id=document.getElementById("editProductId").value,name=document.getElementById("pName").value.trim(),price=Number(document.getElementById("pPrice").value),stock=Number(document.getElementById("pStock").value);
- if(!name||!Number.isFinite(price)||price<0||!Number.isFinite(stock)||stock<0){alert("أدخل الاسم والسعر والمخزون بصورة صحيحة.");return}
- let p={id:id||("p"+Date.now()),name,price,oldPrice:Number(document.getElementById("pOldPrice").value)||0,category:document.getElementById("pCategory").value,stock,description:document.getElementById("pDesc").value.trim(),emoji:document.getElementById("pEmoji").value.trim()||"🐾",image:productImageData};
- let idx=products.findIndex(x=>x.id===id);if(idx>=0)products[idx]=p;else products.push(p);
- if(!saveJSON(PRODUCT_KEY,products))return;
- clearProductForm();renderAdminProducts();renderProducts();alert("تم حفظ المنتج في هذا المتصفح.");
+let id=document.getElementById("editProductId").value,name=document.getElementById("pName").value.trim(),price=Number(document.getElementById("pPrice").value),stock=Number(document.getElementById("pStock").value);
+if(!name||!Number.isFinite(price)||price<0||!Number.isFinite(stock)||stock<0){alert("أدخل الاسم والسعر والمخزون بصورة صحيحة.");return}
+let p={id:id||("p"+Date.now()),name,price,oldPrice:Number(document.getElementById("pOldPrice").value)||0,category:document.getElementById("pCategory").value,stock,description:document.getElementById("pDesc").value.trim(),emoji:document.getElementById("pEmoji").value.trim()||"🐾",image:productImageData};
+let idx=products.findIndex(x=>x.id===id);if(idx>=0)products[idx]=p;else products.push(p);
+if(!saveJSON(PRODUCT_KEY,products))return;
+clearProductForm();renderAdminProducts();renderProducts();alert("تم حفظ المنتج في هذا المتصفح.");
 }
 function deleteProduct(id){
- if(!confirm("هل تريد حذف المنتج؟"))return;
- products=products.filter(p=>p.id!==id);cart=cart.filter(x=>x.id!==id);
- saveJSON(PRODUCT_KEY,products);saveJSON(CART_KEY,cart);renderAdminProducts();renderProducts();renderCart();updateCartCount();
+if(!confirm("هل تريد حذف المنتج؟"))return;
+products=products.filter(p=>p.id!==id);cart=cart.filter(x=>x.id!==id);
+saveJSON(PRODUCT_KEY,products);saveJSON(CART_KEY,cart);renderAdminProducts();renderProducts();renderCart();updateCartCount();
 }
 function saveWallets(){
- wallets={vodafone:document.getElementById("walletVodafone").value.trim(),etisalat:document.getElementById("walletEtisalat").value.trim(),orange:document.getElementById("walletOrange").value.trim(),we:document.getElementById("walletWe").value.trim()};
- if(saveJSON(WALLET_KEY,wallets)){renderPaymentChoices();alert("تم حفظ المحافظ في هذا المتصفح.");}
+wallets={vodafone:document.getElementById("walletVodafone").value.trim(),etisalat:document.getElementById("walletEtisalat").value.trim(),orange:document.getElementById("walletOrange").value.trim(),we:document.getElementById("walletWe").value.trim()};
+if(saveJSON(WALLET_KEY,wallets)){renderPaymentChoices();alert("تم حفظ المحافظ في هذا المتصفح.");}
 }
 function loadWalletFields(){
- document.getElementById("walletVodafone").value=wallets.vodafone||"";document.getElementById("walletEtisalat").value=wallets.etisalat||"";document.getElementById("walletOrange").value=wallets.orange||"";document.getElementById("walletWe").value=wallets.we||"";
+document.getElementById("walletVodafone").value=wallets.vodafone||"";document.getElementById("walletEtisalat").value=wallets.etisalat||"";document.getElementById("walletOrange").value=wallets.orange||"";document.getElementById("walletWe").value=wallets.we||"";
 }
 function saveBundle(){
- bundle={active:document.getElementById("bundleActive").checked,name:document.getElementById("bundleName").value.trim()||"باكيدج المبتدئين",price:Number(document.getElementById("bundlePrice").value)||0,oldPrice:Number(document.getElementById("bundleOldPrice").value)||0,desc:document.getElementById("bundleDesc").value.trim(),contents:document.getElementById("bundleContents").value.trim(),image:bundleImageData};
- if(saveJSON(BUNDLE_KEY,bundle)){renderBundleHome();alert("تم حفظ الباكيدج.");}
+bundle={active:document.getElementById("bundleActive").checked,name:document.getElementById("bundleName").value.trim()||"باكيدج المبتدئين",price:Number(document.getElementById("bundlePrice").value)||0,oldPrice:Number(document.getElementById("bundleOldPrice").value)||0,desc:document.getElementById("bundleDesc").value.trim(),contents:document.getElementById("bundleContents").value.trim(),image:bundleImageData};
+if(saveJSON(BUNDLE_KEY,bundle)){renderBundleHome();alert("تم حفظ الباكيدج.");}
 }
 function readBundleImage(e){
- let f=e.target.files?.[0];if(!f)return;
- if(f.size>1000000){alert("اختر صورة أصغر من 1 ميجابايت.");e.target.value="";return}
- let r=new FileReader();r.onload=()=>{bundleImageData=r.result;document.getElementById("bundleImageStatus").textContent="تم اختيار الصورة. احفظ الباكيدج."};r.readAsDataURL(f);
+let f=e.target.files?.[0];if(!f)return;
+if(f.size>1000000){alert("اختر صورة أصغر من 1 ميجابايت.");e.target.value="";return}
+let r=new FileReader();r.onload=()=>{bundleImageData=r.result;document.getElementById("bundleImageStatus").textContent="تم اختيار الصورة. احفظ الباكيدج."};r.readAsDataURL(f);
 }
 function loadBundleFields(){
- document.getElementById("bundleActive").checked=!!bundle.active;document.getElementById("bundleName").value=bundle.name||"باكيدج المبتدئين";document.getElementById("bundlePrice").value=bundle.price||0;document.getElementById("bundleOldPrice").value=bundle.oldPrice||0;document.getElementById("bundleDesc").value=bundle.desc||"";document.getElementById("bundleContents").value=bundle.contents||"";bundleImageData=bundle.image||"";
- document.getElementById("bundleImageStatus").textContent=bundleImageData?"توجد صورة محفوظة.":"";
+document.getElementById("bundleActive").checked=!!bundle.active;document.getElementById("bundleName").value=bundle.name||"باكيدج المبتدئين";document.getElementById("bundlePrice").value=bundle.price||0;document.getElementById("bundleOldPrice").value=bundle.oldPrice||0;document.getElementById("bundleDesc").value=bundle.desc||"";document.getElementById("bundleContents").value=bundle.contents||"";bundleImageData=bundle.image||"";
+document.getElementById("bundleImageStatus").textContent=bundleImageData?"توجد صورة محفوظة.":"";
 }
 function saveShipping(){
- shipping={small:Number(document.getElementById("shipSmall").value)||0,large:Number(document.getElementById("shipLarge").value)||0,free:Number(document.getElementById("shipFree").value)||0};
- if(saveJSON(SHIPPING_KEY,shipping)){renderCart();alert("تم حفظ إعدادات الشحن.");}
+shipping={small:Number(document.getElementById("shipSmall").value)||0,large:Number(document.getElementById("shipLarge").value)||0,free:Number(document.getElementById("shipFree").value)||0};
+if(saveJSON(SHIPPING_KEY,shipping)){renderCart();alert("تم حفظ إعدادات الشحن.");}
 }
 function loadShippingFields(){
- document.getElementById("shipSmall").value=shipping.small;document.getElementById("shipLarge").value=shipping.large;document.getElementById("shipFree").value=shipping.free;
+document.getElementById("shipSmall").value=shipping.small;document.getElementById("shipLarge").value=shipping.large;document.getElementById("shipFree").value=shipping.free;
 }
 function openPassword(){document.getElementById("passwordModal").classList.add("show");document.getElementById("traderPassword").value="";document.getElementById("passwordError").textContent=""}
 function closePassword(){document.getElementById("passwordModal").classList.remove("show")}
 function checkTraderPassword(){
- if(document.getElementById("traderPassword").value===TRADER_PASSWORD){
- closePassword();showView("traderView");renderAdminProducts();loadWalletFields();loadBundleFields();loadShippingFields();
- }else document.getElementById("passwordError").textContent="كلمة المرور غير صحيحة.";
+if(document.getElementById("traderPassword").value===TRADER_PASSWORD){
+closePassword();showView("traderView");renderAdminProducts();loadWalletFields();loadBundleFields();loadShippingFields();
+}else document.getElementById("passwordError").textContent="كلمة المرور غير صحيحة.";
 }
 function logoutTrader(){goHome()}
 document.getElementById("traderPassword").addEventListener("keydown",e=>{if(e.key==="Enter")checkTraderPassword()});
