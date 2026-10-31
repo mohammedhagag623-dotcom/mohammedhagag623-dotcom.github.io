@@ -167,7 +167,7 @@ footer hr{border:0;border-top:1px solid #ffffff44;margin:14px 0}
 <section class="view" id="traderView">
 <button class="btn light back" onclick="goHome()">← الرجوع للموقع</button>
 <div class="sectionHead"><h2>لوحة التاجر</h2><button class="btn red" onclick="logoutTrader()">خروج</button></div>
-<div class="notice">تغييرات هذه اللوحة محفوظة في هذا المتصفح فقط، ولا تتزامن مع أجهزة العملاء الأخرى من دون تخزين مشترك.</div>
+<div class="notice">تتم مزامنة المنتجات مع Google Sheets ليتمكن العملاء من رؤيتها من أجهزتهم.</div>
 <div class="panel">
 <h2>إدارة المنتجات</h2><div id="adminProducts"></div><hr>
 <h3 id="productFormTitle">إضافة منتج جديد</h3>
@@ -229,7 +229,7 @@ footer hr{border:0;border-top:1px solid #ffffff44;margin:14px 0}
 
 <footer>
 <strong>المركز البيطري المتكامل — ELMARKAZ VET</strong><br>
-تحت إدارة دكتور حجاج · أرمنت الحيط - الأقصر<br>
+تحت إدارة دكتور حجاج · أرمنت الوابورات أمام قصر الثقافة بجوار الموقف<br>
 يوميًا من 9 صباحًا إلى 10 مساءً<br>
 <hr>
 <div>تطوير وبرمجة: <strong>محمد حجاج</strong></div>
@@ -264,8 +264,10 @@ const seedProducts=[
 {id:"p7",name:"مستلزمات بيطرية",price:45,oldPrice:0,stock:40,category:"المستلزمات",emoji:"🩺",image:"",description:"مستلزمات بيطرية متنوعة. اسأل المركز عن النوع المتاح."},
 {id:"p8",name:"فيتامين سي",price:45,oldPrice:0,stock:40,category:"الفيتامينات",emoji:"🍊",image:"",description:"راجع بيانات العبوة وطريقة الاستخدام المناسبة."}
 ];
+
 function loadJSON(k,d){try{let x=localStorage.getItem(k);return x?JSON.parse(x):JSON.parse(JSON.stringify(d))}catch(e){return JSON.parse(JSON.stringify(d))}}
 function saveJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){alert("مساحة التخزين غير كافية. اختر صورة أصغر.");return false}}
+
 let products=loadJSON(PRODUCT_KEY,seedProducts);
 let cart=loadJSON(CART_KEY,[]);
 let wallets=loadJSON(WALLET_KEY,{vodafone:"01038785702",etisalat:"",orange:"",we:""});
@@ -273,12 +275,108 @@ let bundle=loadJSON(BUNDLE_KEY,{active:true,name:"باكيدج المبتدئي�
 let shipping=loadJSON(SHIPPING_KEY,{small:100,large:150,free:1500});
 let activeCategory="الكل",selectedPayment="",productImageData="",bundleImageData="",pressTimer=null,longPressTriggered=false;
 
+/* تحويل المنتج القادم من Google Sheets إلى صيغة الموقع */
+function normalizeRemoteProduct(p){
+const m=p.metadata||{};
+return {
+id:String(p.id||m.id||("p"+Date.now()+Math.random())),
+name:String(p.name||""),
+price:Number(p.price||0),
+oldPrice:Number(m.oldPrice||0),
+stock:Number(m.stock??10),
+category:String(p.category||"الأدوية"),
+emoji:String(m.emoji||"🐾"),
+image:String(p.image||""),
+description:String(m.description||"")
+};
+}
+
+/* جلب المنتجات من Google Sheets باستخدام JSONP */
+function loadProductsFromGoogle(){
+return new Promise(resolve=>{
+const callbackName="elmarkazProductsCallback";
+let finished=false;
+const script=document.createElement("script");
+const timer=setTimeout(()=>{
+if(finished)return;
+finished=true;
+delete window[callbackName];
+script.remove();
+resolve(false);
+},12000);
+
+window[callbackName]=function(result){
+if(finished)return;
+finished=true;
+clearTimeout(timer);
+script.remove();
+delete window[callbackName];
+
+if(result&&result.success&&Array.isArray(result.products)){
+const remote=result.products.map(normalizeRemoteProduct);
+if(remote.length){
+products=remote;
+saveJSON(PRODUCT_KEY,products);
+renderProducts();
+renderAdminProducts();
+}else if(!localStorage.getItem("elmarkaz_seed_uploaded")){
+/* تحميل المنتجات الأساسية مرة واحدة إلى الشيت عند أول تشغيل */
+uploadSeedProducts().then(()=>resolve(true));
+return;
+}
+resolve(true);
+}else resolve(false);
+};
+
+script.onerror=function(){
+if(finished)return;
+finished=true;
+clearTimeout(timer);
+delete window[callbackName];
+resolve(false);
+};
+
+script.src=GOOGLE_SCRIPT_URL+"?action=getProducts&callback="+callbackName+"&_="+Date.now();
+document.body.appendChild(script);
+});
+}
+
+/* رفع المنتجات الافتراضية للشيت عند خلوه */
+async function uploadSeedProducts(){
+try{
+for(const p of seedProducts){
+await postToGoogle({action:"saveProduct",product:p});
+}
+localStorage.setItem("elmarkaz_seed_uploaded","1");
+products=seedProducts.map(p=>({...p}));
+saveJSON(PRODUCT_KEY,products);
+renderProducts();
+renderAdminProducts();
+return true;
+}catch(e){
+console.error(e);
+return false;
+}
+}
+
+/* إرسال بيانات إلى Google Apps Script */
+async function postToGoogle(data){
+await fetch(GOOGLE_SCRIPT_URL,{
+method:"POST",
+mode:"no-cors",
+headers:{"Content-Type":"text/plain;charset=UTF-8"},
+body:JSON.stringify(data)
+});
+return true;
+}
+
 function money(n){return Number(n||0).toLocaleString("ar-EG")+" ج.م"}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function findProduct(id){return products.find(p=>p.id===id)}
 function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
 function goHome(){showView("homeView");renderProducts()}
 function visual(p){return p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`<span>${esc(p.emoji||"🐾")}</span>`}
+
 function renderCategories(){
 let cats=["الكل","الأدوية","التحصينات","الفيتامينات","السموم","المستلزمات","الأعلاف"];
 document.getElementById("categories").innerHTML=cats.map(c=>`<button class="cat ${activeCategory===c?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("");
@@ -338,6 +436,7 @@ document.getElementById("cartItems").innerHTML=rows.length?rows.map(({item,p})=>
 let sub=subtotal(),ship=shipCost(sub,totalQty());
 document.getElementById("cartTotal").innerHTML=`قيمة المنتجات: ${money(sub)}<br>الشحن: ${ship===0?"مجاني":money(ship)}<br>الإجمالي: <span class="price">${money(sub+ship)}</span>`;
 }
+
 const methods=[{id:"vodafone",name:"فودافون كاش",icon:"🔴"},{id:"etisalat",name:"اتصالات كاش",icon:"🟢"},{id:"orange",name:"أورانج كاش",icon:"🟠"},{id:"we",name:"WE Pay / وي كاش",icon:"🟣"}];
 function renderPaymentChoices(){
 let available=methods.filter(m=>(wallets[m.id]||"").trim());
@@ -358,14 +457,12 @@ const d=new Date(),date=d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+S
 return "ELM-"+date+"-"+String(Math.floor(1000+Math.random()*9000));
 }
 
-/* إرسال الطلب إلى Google Sheets */
+/* حفظ الطلب على Google Sheets */
 async function saveOrderToGoogle(orderData){
 try{
-await fetch(GOOGLE_SCRIPT_URL,{
-method:"POST",
-mode:"no-cors",
-headers:{"Content-Type":"text/plain;charset=UTF-8"},
-body:JSON.stringify(orderData)
+await postToGoogle({
+action:"saveOrder",
+order:orderData
 });
 return true;
 }catch(error){
@@ -386,11 +483,13 @@ let notes=document.getElementById("custNotes").value.trim(),ref=document.getElem
 let lines=rows.map(({item,p})=>`- ${p.name} × ${item.qty} = ${money(p.price*item.qty)}`).join("\n");
 let productsText=rows.map(({item,p})=>`${p.name} × ${item.qty}`).join("، ");
 let orderData={
+orderId:orderNo,
 customerName:name,
 phone:phone,
 address:gov+" - "+address,
-products:productsText,
-total:total
+products:productsText+" | طريقة الدفع: "+m.name+" | رقم العملية: "+ref+" | اسم المحول: "+payer+" | ملاحظات: "+notes,
+total:total,
+status:"جديد"
 };
 let msg=`طلب جديد من المركز البيطري المتكامل
 رقم الطلب: ${orderNo}
@@ -476,19 +575,40 @@ let f=e.target.files?.[0];if(!f)return;
 if(f.size>1000000){alert("اختر صورة أصغر من 1 ميجابايت.");e.target.value="";return}
 let r=new FileReader();r.onload=()=>{productImageData=r.result;document.getElementById("imageStatus").textContent="تم اختيار الصورة. اضغط حفظ المنتج."};r.readAsDataURL(f);
 }
-function saveProduct(){
+
+/* إضافة وتعديل المنتج في Google Sheets */
+async function saveProduct(){
 let id=document.getElementById("editProductId").value,name=document.getElementById("pName").value.trim(),price=Number(document.getElementById("pPrice").value),stock=Number(document.getElementById("pStock").value);
 if(!name||!Number.isFinite(price)||price<0||!Number.isFinite(stock)||stock<0){alert("أدخل الاسم والسعر والمخزون بصورة صحيحة.");return}
 let p={id:id||("p"+Date.now()),name,price,oldPrice:Number(document.getElementById("pOldPrice").value)||0,category:document.getElementById("pCategory").value,stock,description:document.getElementById("pDesc").value.trim(),emoji:document.getElementById("pEmoji").value.trim()||"🐾",image:productImageData};
-let idx=products.findIndex(x=>x.id===id);if(idx>=0)products[idx]=p;else products.push(p);
-if(!saveJSON(PRODUCT_KEY,products))return;
-clearProductForm();renderAdminProducts();renderProducts();alert("تم حفظ المنتج في هذا المتصفح.");
+try{
+await postToGoogle({action:"saveProduct",product:p});
+let idx=products.findIndex(x=>x.id===id);
+if(idx>=0)products[idx]=p;else products.push(p);
+saveJSON(PRODUCT_KEY,products);
+clearProductForm();renderAdminProducts();renderProducts();
+alert("تم إرسال المنتج إلى Google Sheets. إذا لم يظهر على الأجهزة الأخرى، راجع ورقة Products.");
+}catch(error){
+console.error(error);
+alert("تعذر إرسال المنتج إلى Google Sheets.");
 }
-function deleteProduct(id){
+}
+
+/* حذف المنتج من Google Sheets */
+async function deleteProduct(id){
 if(!confirm("هل تريد حذف المنتج؟"))return;
+try{
+await postToGoogle({action:"deleteProduct",id:id});
 products=products.filter(p=>p.id!==id);cart=cart.filter(x=>x.id!==id);
-saveJSON(PRODUCT_KEY,products);saveJSON(CART_KEY,cart);renderAdminProducts();renderProducts();renderCart();updateCartCount();
+saveJSON(PRODUCT_KEY,products);saveJSON(CART_KEY,cart);
+renderAdminProducts();renderProducts();renderCart();updateCartCount();
+alert("تم إرسال أمر حذف المنتج إلى Google Sheets.");
+}catch(error){
+console.error(error);
+alert("تعذر إرسال أمر الحذف إلى Google Sheets.");
 }
+}
+
 function saveWallets(){
 wallets={vodafone:document.getElementById("walletVodafone").value.trim(),etisalat:document.getElementById("walletEtisalat").value.trim(),orange:document.getElementById("walletOrange").value.trim(),we:document.getElementById("walletWe").value.trim()};
 if(saveJSON(WALLET_KEY,wallets)){renderPaymentChoices();alert("تم حفظ المحافظ في هذا المتصفح.");}
@@ -536,6 +656,11 @@ brand.addEventListener("click",e=>{e.preventDefault();if(longPressTriggered){lon
 brand.addEventListener("contextmenu",e=>e.preventDefault());
 
 renderProducts();renderCart();renderPaymentChoices();updateCartCount();
+
+/* تحديث المنتجات من الشيت عند فتح الموقع */
+loadProductsFromGoogle().then(ok=>{
+if(!ok)console.log("تعذر جلب المنتجات من Google Sheets؛ يتم عرض المنتجات المحفوظة محليًا.");
+});
 </script>
 </body>
 </html>
